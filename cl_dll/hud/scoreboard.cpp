@@ -356,8 +356,11 @@ int CHudScoreboard :: DrawTeams( float list_slot )
 
 		ypos = ystart + (list_slot * ROW_GAP);
 
+		bool isSpectatorTeam = (team_info->teamnumber == TEAM_SPECTATOR ||
+		                         team_info->teamnumber == TEAM_UNASSIGNED);
+	
 		// check we haven't drawn too far down
-		if ( ypos > yend )  // don't draw to close to the lower border
+		if ( ypos > yend && !isSpectatorTeam )  // don't draw to close to the lower border
 			break;
 
 		int r, g, b;
