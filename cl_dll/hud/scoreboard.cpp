@@ -355,11 +355,12 @@ int CHudScoreboard :: DrawTeams( float list_slot )
 			continue;
 
 		ypos = ystart + (list_slot * ROW_GAP);
-
+		
+		// check we haven't drawn too far down
+		// but ALWAYS allow spectators to render even if past yend
 		bool isSpectatorTeam = (team_info->teamnumber == TEAM_SPECTATOR ||
 		                         team_info->teamnumber == TEAM_UNASSIGNED);
 	
-		// check we haven't drawn too far down
 		if ( ypos > yend && !isSpectatorTeam )  // don't draw to close to the lower border
 			break;
 
